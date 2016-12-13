@@ -2,24 +2,61 @@
 <html>
 <head>
 	<title>Battle's Home</title>
-	<script type="text/javascript" src="./node_modules/bootstrap/css/"></script>
+	<script type="text/javascript" src="./node_modules/angular/angular.js"></script>
 	<link rel="stylesheet" type="text/css" href="/style/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="/style/bootstrap/custom.css">
 </head>
 <body>
 	<h1>Hello</h1>
 	<div class="container-fluid">
-		<div class="col-md-4">
+		<div class="nav nav-bar">
+			
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="col-md-3">
 			<div class="row">
 				This is the left panel
 			</div>
 		</div>
-		<div class="col-md-8">
-			<div class="row">
-				This is the right panel
-				
+		<div class="col-md-9">			
+			<div ng-app="myApp" ng-controller="myCtrl">
+				<div class="row">
+					<div ng-repeat="battle in battles" class="battle-detils">
+						<div class="row">
+							<div class="col-md-6">
+								<p>Battle # : {{ battle.battle_number }}</p>
+								<p>{{ battle.attacker_king }}</p>							
+							</div>
+							<div class="col-md-6">
+								<p>&nbsp;</p>							
+								<p>{{ battle.defender_king }}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<p>Won By : <span ng-if="battle.attacker_outcome == 'win' ">
+								       {{battle.attacker_king}}
+								     </span>
+								     <span ng-if="battle.attacker_outcome == 'loss' ">
+								       {{battle.defender_king}}
+								     </span>
+								</p>     
+							</div>						
+						</div>
+					</div>	
+				</div>
 			</div>
 		</div>
 	</div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope, $http) {
+		    $http.get("/details")
+		    .then(function(response) {
+		        $scope.battles = response.data;
+		    });
+		});
+	</script>
 </body>
 </html>

@@ -28,10 +28,10 @@ app.get('/details',function(req,res){
       if(err) throw err;     
       res.send(JSON.stringify(rows));      
     });  
+    con.end(function(err) {
+      // The connection is terminated gracefully
+      // Ensures all previously enqueued queries are still
+      // before sending a COM_QUIT packet to the MySQL server.
+    });
 });
 
-con.end(function(err) {
-  // The connection is terminated gracefully
-  // Ensures all previously enqueued queries are still
-  // before sending a COM_QUIT packet to the MySQL server.
-});

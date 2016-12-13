@@ -3,7 +3,11 @@ body {
 	margin: 10px;
 }
 
-.king-detils {
-	border-width: 2px;
+.battle-detils {
+	border: 1px solid;
 }
 
+.battle-detils p {
+	margin: 1px;
+	padding: 2px;
+}
