@@ -1,0 +1,22 @@
+{
+  "name": "battles-challenge",
+  "version": "1.0.0",
+  "description": "This is ADP full stack hiring challenge",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ADP",
+    "battles",
+    "challenge"
+  ],
+  "private": true,
+  "author": "Harshit Garg",
+  "license": "ISC"
+}
